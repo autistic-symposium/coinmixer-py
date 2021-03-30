@@ -1,8 +1,9 @@
-# Jobcoin Mixer 🐍💎
+# Coin Mixer 🐍💎
 
 As Bitcoin is not an anonymous protocol (but a pseudonymous system), our **Jobcoin Mixer** is a great way to maintain your privacy on the Jobcoin Network (for a tiny small fee 😉)!
 
-We use [Jobcoin Server API endpoints](https://jobcoin.gemini.com/todo_my_instance/api#addresses-address-info-get) to deploy our sophisticated mixer algorithm to your coin deposit!
+We use [Coin Mixer Server API endpoints]() to deploy our sophisticated mixer algorithm to your coin deposit!
+
 
 <p align="center">
 <img src="./imgs/Jobcoin_Mixer.png" width="90%" align="center" style="padding:1px;border:thin solid black;" />
@@ -25,8 +26,8 @@ cp .env_sample .env
 Set the following variables:
 
 ```
-API_ADDRESS_URL = 'http://jobcoin.gemini.com/aide-sports/api/addresses'
-API_TRANSACTIONS_URL = 'http://jobcoin.gemini.com/aide-sports/api/transactions'
+API_ADDRESS_URL = ''
+API_TRANSACTIONS_URL = ''
 SIGNIFICANT_DIGITS = 17
 HOUSE_ADDRESS = 'Jobcoin-House'
 FEE_PERCENTAGE = 0.1
