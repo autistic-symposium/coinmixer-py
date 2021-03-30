@@ -1,6 +1,6 @@
 # Coin Mixer 🐍💎
 
-As Bitcoin is not an anonymous protocol (but a pseudonymous system), our **Coin Mixer** PoC is an approach of maintaining privacy on our Aquario Coin Network (for a tiny small fee 😉)!
+As Bitcoin is not an anonymous protocol (but a pseudonymous system), our **Coin Mixer** PoC is an approach to maintaining privacy on our Aquario Coin Network (for a tiny small fee 😉)!
 
 We use [Coin Mixer Server API endpoints]() to deploy our sophisticated mixer algorithm to your coin deposit!
 
