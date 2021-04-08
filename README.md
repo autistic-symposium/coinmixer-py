@@ -206,7 +206,7 @@ pip install -r requirements_test.txt
 
 ---
 
-## Next Steps
+## TODO (some day)
 
 * Improve unit tests. Add missing tests for `test_jobcoin.py`, `test_cli.py`, and `test_util.py`. Add tests for failures and success, with better mocking and fixtures.
 * Improve private method `_is_empty()` as it loops over all the transactions address. As the list increases, this will take too long. Maybe we should simply check whether the address has zero coins? Should we think about a cache solution?
