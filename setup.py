@@ -4,7 +4,7 @@ setup(
     name='jobcoin',
     version='0.0.1',
     packages=find_packages(include=['jobcoin', 'jobcoin.*']),
-    author='Mia von Steinkirch',
+    author='Mia Stein',
     install_requires=[
         'click',
         'requests',
