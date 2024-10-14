@@ -1,29 +1,29 @@
-# Coin Mixer 🐍💎
+## jobcoin: a cryptocurrency coin mixer
 
-A crypto coins are not an anonymous protocol (but a pseudonymous system), our **Coin Mixer** PoC is an approach to maintaining privacy on our jobcoin network (for a tiny small fee 😉)!
-
-We use [Coin Mixer Server API endpoints]() to deploy our sophisticated mixer algorithm to your coin deposit!
-
-
+<br>
 <p align="center">
 <img src="./imgs/Jobcoin_Mixer.png" width="90%" align="center" style="padding:1px;border:thin solid black;" />
 </p>
+<br>
 
+#### 👉🏼 cryptocurrency coins operate on a pseudonymous system, not an anonymous protocol, so our coin mixer proof-of-concept offers an approach to enhance privacy on the network—for a small fee 😉
 
-#### To install our Jobcoin Mixer CLI, follow the instructions below.
+<br>
 
-----
+---
 
+### setting up
 
-## Set up your `.env` file
+<br>
 
-To follow best practices, we set our variables and secrets into a `.env` file, which can be copied from `.env_sample`:
+* set up your `.env` file
 
 ```
 cp .env_sample .env
+make install
 ```
 
-Set the following variables:
+* with the following variables:
 
 ```
 API_ADDRESS_URL = ''
@@ -34,184 +34,119 @@ FEE_PERCENTAGE = 0.1
 WITHDRAW_MAX_VALUE = 1
 ```
 
-#### What is `HOUSE_ADDRESS`?
+<br>
 
-The ephemeral `hex` *deposit address* moves the coins to this address, where it's then mixed with other coins.
+##### `HOUSE_ADDRESS`
 
-
-#### What is `SIGNIFICANT_DIGITS`?
-
-As Jobcoin Mixer deals with float transactions, this variable sets the desired precision when converting strings to float.
-
-#### What is `FEE_PERCENTAGE`?
-
-An integer number representing the percentage fee to be collected for the mixing service. Set to 0 for no fee.
+* the ephemeral `hex` *deposit address* moves the coins to this address, where it's then mixed with other coins
 
 
-#### What is `MAX_WITHDRAW_VALUE`?
+##### `SIGNIFICANT_DIGITS`
 
-Set the value for small withdrawal values for which Jobcoin Mixer will move from the House address to each personal addresses.
+* as Jobcoin Mixer deals with float transactions, this variable sets the desired precision when converting strings to float
 
-Jobcoin Mixer *cares about your privacy*, so setting this to smaller values makes the transactions more discrete!
+##### `FEE_PERCENTAGE`
 
-If you would like to have Jobcoin Mixer withdrawing all coins in one unique transaction, simply leave this constant empty (`None`).
+* an integer number representing the percentage fee to be collected for the mixing service (set to 0 for no fee)
 
+
+##### `MAX_WITHDRAW_VALUE`
+
+* set the value for small withdrawal values for which Jobcoin Mixer will move from the House address to each personal addresses
+* jobcoin Mixer *cares about your privacy*, so setting this to smaller values makes the transactions more discrete
+* f you would like to have Jobcoin Mixer withdrawing all coins in one unique transaction, simply leave this constant empty (`None`)
+
+<br>
 
 ----
-## Install Jobcoin
 
-You can install Jobcoin either via `setup.py` or by running it straight from the executable (`jobcoin/cli.py`).
+### running
 
-## With `setuptools`
-
-Install `jobcoin 0.0.1` with:
-
-```
-make install
-```
-
-Now you can run:
+<br>
 
 ```
 jobcoin
 ```
 
-## With `cli.py`
-
-
-### Install dependencies in a virtual environment
-
-You can use either `virtualenv` or `pipenv`.
-
-#### Using virtualenv
-
-Install `virtualenv`:
-
-```
-pip install virtualenv
-```
-
-Creating and sourcing the environment:
-
-```
-virtualenv venv
-source venv/bin/activate
-```
-
-Install dependencies:
-
-```
-pip install -r requirements.txt
-```
-
-You can always check what is installed in your environment with:
-
-```
-pip freeze
-```
-
-#### Using pipenv
-
-Install `pipenv`:
-
-```
-pip install pipenv
-```
-
-Create a new virtual environment using pipenv:
-
-```
-pipenv install
-```
-
-Activate:
-
-```
-pipenv shell
-```
-
-You can always check what is installed in your environment with:
-
-```
-pipenv graph
-```
-
-Remove the prefix `jobcoin.` from every import at the top of the source files `api.py`, `cli.py`, and `jobcoin.py`.
-
-Then run:
-
-```
-./jobcoin/cli.py
-```
+<br>
 
 ---
 
-### Example of usage
+### usage
 
+<br>
 
-#### Successful flow
-
+* successful flow
 
 <p align="center">
 <img src="./imgs/Mixer_example.png" width="90%" align="center" style="padding:1px;border:thin solid black;" />
 </p>
 
-#### Personal address is not unused
+<br>
+
+* personal address is not unused
 
 <p align="center">
 <img src="./imgs/Mixer_example_error.png" width="90%" align="center" style="padding:1px;border:thin solid black;" />
 </p>
 
-#### Insufficient funds
+<br>
+
+* insufficient funds
 
 <p align="center">
 <img src="./imgs/Mixer_example_error_2.png" width="90%" align="center" style="padding:1px;border:thin solid black;" />
 </p>
 
-#### Given coin amount is zero
+<br>
+
+* given coin amount is zero
 
 <p align="center">
 <img src="./imgs/Mixer_example_error_3.png" width="90%" align="center" style="padding:1px;border:thin solid black;" />
 </p>
 
+<br>
+
 ----
 
-## Developer corner
+### developer corner
 
-If you are developing Jobcoin Mixer, you have the following resources:
+<br>
 
-#### Running a linter
+* running a linter
 
 ```
 make lint
 ```
+<br>
 
-#### Running unit tests
+* running unit tests
 
 ```
 make test
 ```
 
-#### Cleaning dist, dev, test, files
+<br>
+
+* cleaning dist, dev, test, files
 
 ```
 make clean
 ```
 
-Note: to be able to run tests and linter, install:
-
-```
-pip install -r requirements_test.txt
-```
+<br>
 
 ---
 
-## TODO (some day)
+### open tasks
 
-* Improve unit tests. Add missing tests for `test_jobcoin.py`, `test_cli.py`, and `test_util.py`. Add tests for failures and success, with better mocking and fixtures.
-* Improve private method `_is_empty()` as it loops over all the transactions address. As the list increases, this will take too long. Maybe we should simply check whether the address has zero coins? Should we think about a cache solution?
-* Deal with the increased size of the list of transactions being pulled from the server every time. Should we think about a cache solution?
-* Convert the code to pure Python 3 (e.g., `-> return` in the module name, etc.). Make sure the dependencies install Python3 libraries. Make sure the code run in Python3.
-* Adding `logging` everywhere, with different types of logging levels.
-* Improve rules for linting.
+<br>
+
+* improve unit tests. Add missing tests for `test_jobcoin.py`, `test_cli.py`, and `test_util.py`; add tests for failures and success, with better mocking and fixtures
+* improve private method `_is_empty()` as it loops over all the transactions address; as the list increases, this will take too long
+* deal with the increased size of the list of transactions being pulled from the server every time
+* convert the code to pure Python 3 (e.g., `-> return` in the module name, etc.); make sure the dependencies install Python3 libraries
+* adding `logging` everywhere, with different types of logging levels
+* Iimprove rules for linting
 
